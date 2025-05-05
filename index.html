@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusConnect</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        .suggestion-item .group-link { text-decoration: none; color: inherit; cursor: pointer; }
+        .suggestion-item .group-link:hover { text-decoration: underline; }
+        .suggestion-item button.joined-btn { background-color: #5cb85c; color: white; border: none; padding: 8px 12px; border-radius: 5px; cursor: default; }
+        .group-page { display: none; padding: 20px; border: 1px solid #ddd; margin-top: 20px; }
+        .group-page h2 { margin-top: 0; }
+        button.liked { color: #0B6623; }
+        #edit-profile-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.35); z-index: 1000; align-items: center; justify-content: center;
+        }
+        #edit-profile-modal .modal-content {
+            background: #fff; padding: 24px 32px; border-radius: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+            min-width: 300px; max-width: 90vw; position: relative;
+        }
+        #edit-profile-modal input[type="text"] {
+            width: 100%; margin-bottom: 10px; padding: 5px;
+        }
+        #edit-profile-modal h2 { margin-top: 0; }
+        #edit-profile-modal .modal-actions { margin-top: 12px; text-align: right; }
+        .feed { position: relative; }
+        .post-input-container {
+            position: sticky; top: 0; background: white; padding: 10px 0; z-index: 10; border-bottom: 1px solid #ddd;
+        }
+        .comment-input-area { display: none; margin-top: 5px; }
+        .comment-section p { margin: 4px 0 0 0; font-size: 0.97em; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">CampusConnect</div>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="home-link">Home</a></li>
+            <li><a href="Navigation Lists/profile.html" class="profile-link">My Profile</a></li>
+            <li><a href="Navigation Lists/groups.html" class="groups-link">Groups</a></li>
+            <li><a href="Navigation Lists/events.html" class="events-link">Events</a></li>
+            <li><a href="Navigation Lists/resources.html" class="resources-link">Resources</a></li>
+            <li><a href="Navigation Lists/messages.html">Messages</a></li>
+        </ul>
+    </nav>
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+    </div>
+</header>
+
+<main class="container">
+    <section class="left-sidebar" id="profile">
+        <div class="profile-card">
+            <img src="image/sponge.jpg" alt="Profile Picture" class="profile-pic">
+            <h3 id="profile-name">Alex Johnson</h3>
+            <p id="profile-major">Computer Science Major</p>
+            <div class="profile-links">
+                <a href="#">GitHub</a> | <a href="#">LinkedIn</a>
+            </div>
+            <button id="edit-profile-btn">Edit Profile</button>
+        </div>
+        <div class="shortcuts">
+            <h4>Shortcuts</h4>
+            <ul>
+                <li><a href="Navigation Lists/my-groups.html">Joined Groups</a></li>
+                <li><a href="Navigation Lists/my-resources.html">Saved Resources</a></li>
+                <li><a href="Navigation Lists/my-events.html">My Events</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="feed" id="home">
+        <div class="post-input-container">
+            <textarea placeholder="Share something with your campus..."></textarea>
+            <div class="post-options">
+                <button class="photo-video-button">Photo/Video</button>
+                <button>Feeling/Activity</button>
+                <button class="post-button">Post</button>
+            </div>
+        </div>
+
+        <!-- Example: this is your own post, so use class="my-profile-name" -->
+        <div class="post" data-post-id="1">
+            <div class="post-header">
+                <img src="image/sponge.jpg" alt="User Profile" class="post-user-pic">
+                <div class="post-info">
+                    <h3 class="my-profile-name">Alex Johnson</h3>
+                    <p>Posted 2 hours ago</p>
+                </div>
+            </div>
+            <p class="post-text">Excited to join CampusConnect!</p>
+            <div class="post-actions">
+                <button class="like-button" data-post-id="1">Like</button>
+                <button class="comment-button" data-post-id="1">Comment</button>
+                <button>Share</button>
+            </div>
+            <div class="comment-section" id="comments-1"></div>
+            <div class="comment-input-area">
+                <input type="text" placeholder="Write a comment..." data-post-id="1">
+                <button class="submit-comment-button" data-post-id="1">Post</button>
+            </div>
+        </div>
+
+        <!-- Other users' posts: do NOT use class="my-profile-name" -->
+        <div class="post" data-post-id="2">
+            <div class="post-header">
+                <img src="image/sandy.jpg" alt="User Profile" class="post-user-pic">
+                <div class="post-info">
+                    <h3>Emily Rose</h3>
+                    <p>Posted 1 day ago</p>
+                </div>
+            </div>
+            <p class="post-text">Uploaded lecture notes for CS 101 Midterms! Hope it helps everyone. Check Resources section! #StudyTogether</p>
+            <div class="post-actions">
+                <button class="like-button" data-post-id="2">Like</button>
+                <button class="comment-button" data-post-id="2">Comment</button>
+                <button>Share</button>
+            </div>
+            <div class="comment-section" id="comments-2"></div>
+            <div class="comment-input-area">
+                <input type="text" placeholder="Write a comment..." data-post-id="2">
+                <button class="submit-comment-button" data-post-id="2">Post</button>
+            </div>
+        </div>
+
+        <div class="post" data-post-id="3">
+            <div class="post-header">
+                <img src="image/patrick.jpg" alt="User Profile" class="post-user-pic">
+                <div class="post-info">
+                    <h3>Michael Tan</h3>
+                    <p>Posted just now</p>
+                </div>
+            </div>
+            <p class="post-text">Anyone interested in forming a study group for Math 202? Let's ace this semester! #StudyGroup</p>
+            <div class="post-actions">
+                <button class="like-button" data-post-id="3">Like</button>
+                <button class="comment-button" data-post-id="3">Comment</button>
+                <button>Share</button>
+            </div>
+            <div class="comment-section" id="comments-3"></div>
+            <div class="comment-input-area">
+                <input type="text" placeholder="Write a comment..." data-post-id="3">
+                <button class="submit-comment-button" data-post-id="3">Post</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="right-sidebar">
+        <div class="suggestions" id="groups">
+            <h4>Groups & Communities</h4>
+            <div class="suggestion-item" data-group-id="cs101">
+                <img src="image/cs 101.jpg.crdownload" alt="Group 1" class="suggestion-pic">
+                <p><a href="#" class="group-link" data-group-name="CS 101 Study Group">CS 101 Study Group</a></p>
+                <button class="join-btn" data-group="CS 101 Study Group">Join</button>
+            </div>
+            <div class="suggestion-item" data-group-id="photographyclub">
+                <img src="image/photography.jpg" alt="Group 2" class="suggestion-pic">
+                <p><a href="#" class="group-link" data-group-name="Photography Club">Photography Club</a></p>
+                <button class="join-btn" data-group="Photography Club">Join</button>
+            </div>
+        </div>
+        <div class="trending">
+            <h4>Trending</h4>
+            <ul>
+                <li>#MidtermsPrep</li>
+                <li>#Hackathon2025</li>
+                <li>#CampusEvents</li>
+            </ul>
+        </div>
+        <div class="events" id="events">
+            <h4>Upcoming Events</h4>
+            <ul>
+                <li>Career Fair - May 5, 2025</li>
+                <li>Spring Fest - May 10, 2025</li>
+            </ul>
+        </div>
+        <div class="resources" id="resources">
+            <h4>Resources</h4>
+            <ul>
+                <li><a href="#">CS 101 Midterm Notes</a></li>
+                <li><a href="#">Physics Cheat Sheet</a></li>
+            </ul>
+        </div>
+    </section>
+</main>
+
+<div class="group-page" id="group-page-cs101">
+    <h2>CS 101 Study Group</h2>
+    <p>Welcome to the CS 101 Study Group! This is a place for students taking Introduction to Computer Science to collaborate, ask questions, and share resources.</p>
+    <ul>
+        <li>Discussion about the latest assignment</li>
+        <li>Shared study materials</li>
+        <li>Q&A forum</li>
+    </ul>
+    <button class="back-to-feed">Back to Feed</button>
+</div>
+
+<div class="group-page" id="group-page-photographyclub">
+    <h2>Photography Club</h2>
+    <p>Hey shutterbugs! Join the Photography Club to explore the art of capturing moments. Share your photos, learn new techniques, and participate in photo walks.</p>
+    <ul>
+        <li>Upcoming photo walk schedule</li>
+        <li>Tips and tricks for beginners</li>
+        <li>Member photo gallery</li>
+    </ul>
+    <button class="back-to-feed">Back to Feed</button>
+</div>
+
+<!-- Edit Profile Modal -->
+<div id="edit-profile-modal">
+    <div class="modal-content">
+        <h2>Edit Profile</h2>
+        <label>
+            Name:<br>
+            <input type="text" id="edit-profile-name">
+        </label><br>
+        <label>
+            Major:<br>
+            <input type="text" id="edit-profile-major-input">
+        </label><br>
+        <div class="modal-actions">
+            <button id="save-profile-btn" style="margin-right:10px;">Save</button>
+            <button id="cancel-profile-btn">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 CampusConnect - Empowering Student Connections</p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // FEED, GROUP PAGES, RIGHT SIDEBAR
+    const feedSection = document.querySelector('.feed');
+    const rightSidebar = document.querySelector('.right-sidebar');
+    const groupPages = document.querySelectorAll('.group-page');
+
+    // --- GROUPS & COMMUNITIES INTERACTIVITY ---
+    document.getElementById('groups').addEventListener('click', function(event) {
+        // JOIN BUTTON
+        if (event.target.classList.contains('join-btn')) {
+            const btn = event.target;
+            btn.textContent = 'Joined';
+            btn.classList.add('joined-btn');
+            btn.classList.remove('join-btn');
+            btn.disabled = true;
+            alert(`You have joined "${btn.getAttribute('data-group')}"!`);
+        }
+
+        // GROUP NAME LINK
+        if (event.target.classList.contains('group-link')) {
+            event.preventDefault();
+            const groupName = event.target.getAttribute('data-group-name').toLowerCase().replace(/\s+/g, '');
+            const targetGroupId = `group-page-${groupName}`;
+            const targetGroupPage = document.getElementById(targetGroupId);
+
+            if (targetGroupPage) {
+                feedSection.style.display = 'none';
+                rightSidebar.style.display = 'none';
+                groupPages.forEach(page => page.style.display = 'none');
+                targetGroupPage.style.display = 'block';
+            } else {
+                alert('Group page not found!');
+            }
+        }
+
+        // GROUP IMAGE (clicking image opens group page)
+        if (event.target.classList.contains('suggestion-pic')) {
+            const item = event.target.closest('.suggestion-item');
+            if (item) {
+                const link = item.querySelector('.group-link');
+                if (link) link.click();
+            }
+        }
+    });
+
+    // --- BACK TO FEED BUTTONS ---
+    document.querySelectorAll('.back-to-feed').forEach(button => {
+        button.addEventListener('click', function() {
+            feedSection.style.display = 'block';
+            rightSidebar.style.display = 'block';
+            groupPages.forEach(page => page.style.display = 'none');
+        });
+    });
+
+    // --- FEED INTERACTIONS (LIKE, COMMENT, POST) ---
+    feedSection.addEventListener('click', function(event) {
+        const target = event.target;
+
+        // Like button
+        if (target.classList.contains('like-button')) {
+            const liked = target.textContent === 'Liked';
+            target.textContent = liked ? 'Like' : 'Liked';
+            target.classList.toggle('liked', !liked);
+        }
+
+        // Comment button
+        if (target.classList.contains('comment-button')) {
+            const post = target.closest('.post');
+            const commentInputArea = post.querySelector('.comment-input-area');
+            commentInputArea.style.display = (commentInputArea.style.display === 'block') ? 'none' : 'block';
+        }
+
+        // Submit comment button
+        if (target.classList.contains('submit-comment-button')) {
+            const post = target.closest('.post');
+            const commentInput = post.querySelector('.comment-input-area input[type="text"]');
+            const commentSection = post.querySelector('.comment-section');
+            const commentText = commentInput.value.trim();
+            if (commentText) {
+                const newComment = document.createElement('p');
+                newComment.textContent = `You: ${commentText}`;
+                commentSection.appendChild(newComment);
+                commentInput.value = '';
+            }
+        }
+    });
+
+    // --- POSTING NEW POSTS ---
+    const postInput = document.querySelector('.post-input-container textarea');
+    const postButton = document.querySelector('.post-button');
+    const nameDisplay = document.getElementById('profile-name');
+    postButton.addEventListener('click', function() {
+        const text = postInput.value.trim();
+        if (!text) return;
+
+        const postId = 'new-' + Date.now();
+        const currentName = nameDisplay.textContent;
+
+        const newPost = document.createElement('div');
+        newPost.classList.add('post');
+        newPost.setAttribute('data-post-id', postId);
+        newPost.innerHTML = `
+            <div class="post-header">
+                <img src="image/sponge.jpg" alt="User Profile" class="post-user-pic">
+                <div class="post-info">
+                    <h3 class="my-profile-name">${currentName}</h3>
+                    <p>Posted just now</p>
+                </div>
+            </div>
+            <p class="post-text">${text}</p>
+            <div class="post-actions">
+                <button class="like-button" data-post-id="${postId}">Like</button>
+                <button class="comment-button" data-post-id="${postId}">Comment</button>
+                <button>Share</button>
+            </div>
+            <div class="comment-section" id="comments-${postId}"></div>
+            <div class="comment-input-area">
+                <input type="text" placeholder="Write a comment..." data-post-id="${postId}">
+                <button class="submit-comment-button" data-post-id="${postId}">Post</button>
+            </div>
+        `;
+        // Insert new post after the post input bar
+        const postInputContainer = document.querySelector('.post-input-container');
+        feedSection.insertBefore(newPost, postInputContainer.nextSibling);
+
+        postInput.value = '';
+    });
+
+    // --- EDIT PROFILE MODAL LOGIC ---
+    const editBtn = document.getElementById('edit-profile-btn');
+    const modal = document.getElementById('edit-profile-modal');
+    const saveBtn = document.getElementById('save-profile-btn');
+    const cancelBtn = document.getElementById('cancel-profile-btn');
+    const majorInput = document.getElementById('edit-profile-major-input');
+    const majorDisplay = document.getElementById('profile-major');
+    const nameInput = document.getElementById('edit-profile-name');
+
+    editBtn.addEventListener('click', function() {
+        nameInput.value = nameDisplay.textContent;
+        majorInput.value = majorDisplay.textContent;
+        modal.style.display = 'flex';
+    });
+
+    saveBtn.addEventListener('click', function() {
+        const newName = nameInput.value.trim() || 'Alex Johnson';
+        const newMajor = majorInput.value.trim() || 'Computer Science Major';
+        nameDisplay.textContent = newName;
+        majorDisplay.textContent = newMajor;
+        modal.style.display = 'none';
+
+        // Update all posts authored by the profile owner
+        document.querySelectorAll('.my-profile-name').forEach(function(el) {
+            el.textContent = newName;
+        });
+    });
+
+    cancelBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.style.display = 'none';
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events - CampusConnect</title>
+    <link rel="stylesheet" href="navstyle.css">
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">Campus Connect</div>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="home-link">Home</a></li>
+            <li><a href="profile.html" class="profile-link">My Profile</a></li>
+            <li><a href="groups.html" class="groups-link">Groups</a></li>
+            <li><a href="events.html" class="events-link">Events</a></li>
+            <li><a href="resources.html" class="resources-link">Resources</a></li>
+        </ul>
+    </nav>
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+    </div>
+</header>
+
+    <main class="container">
+        <section class="feed" style="width: 100%;">
+
+            <h2>Campus Events</h2>
+            <div class="events-filter">
+                <button class="filter-button active">All Events</button>
+                <button class="filter-button">Academic</button>
+                <button class="filter-button">Social</button>
+                <button class="filter-button">Workshops</button>
+                <button class="filter-button">Sports</button>
+                </div>
+
+            <div class="my-events" id="mine">
+                <h3>My Events</h3>
+                <div class="post">
+                    <h3>Spring Fest</h3>
+                    <p><strong>Date:</strong> May 10, 2025 | <strong>Time:</strong> 10:00 AM - 4:00 PM<br>
+                    <strong>Location:</strong> Campus Grounds</p>
+                    <p>Enjoy food, games, club booths, and music performances.</p>
+                    <button class="rsvpd">RSVP'd</button>
+                    <button class="reminder-button">Set Reminder</button>
+                </div>
+                </div>
+
+            <h2>All Upcoming Events</h2>
+            <p>Explore what's happening on campus. Click RSVP to attend.</p>
+
+            <div class="post">
+                <h3>Career Fair 2025</h3>
+                <p><strong>Date:</strong> May 5, 2025 | <strong>Time:</strong> 9:00 AM - 3:00 PM<br>
+                <strong>Location:</strong> Main Hall A</p>
+                <p>Meet recruiters, attend resume reviews, and explore job openings.</p>
+                <button class="rsvp-button">RSVP</button>
+                <button class="reminder-button">Set Reminder</button>
+            </div>
+
+            <div class="post">
+                <h3>AI & Ethics Seminar</h3>
+                <p><strong>Date:</strong> May 15, 2025 | <strong>Time:</strong> 2:00 PM - 3:30 PM<br>
+                <strong>Location:</strong> Room B-202</p>
+                <p>Explore ethical considerations in artificial intelligence development. Speaker: Dr. Anya Sharma.</p>
+                <button class="rsvp-button">RSVP</button>
+                <button class="reminder-button">Set Reminder</button>
+            </div>
+
+            </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CampusConnect - Empowering Student Connections</p>
+    </footer>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.events-filter .filter-button');
+            const allEvents = document.querySelectorAll('.post'); // Select all event post items
+            const myEventsSection = document.querySelector('.my-events'); // Select the 'My Events' section
+            const rsvpButtons = document.querySelectorAll('.rsvp-button');
+            const reminderButtons = document.querySelectorAll('.reminder-button');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-button.active').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    const category = this.textContent.toLowerCase().replace(' events', ''); // Get category
+
+                    console.log('Filtering events by:', category);
+
+                    // Basic example: Hide all events and show based on category
+                    allEvents.forEach(event => {
+                        event.style.display = 'none'; // Hide all initially
+                        if (category === 'all') {
+                            event.style.display = 'block'; // Show all if 'All' is selected
+                        } else {
+                            // In a real scenario, you'd check if the event's data matches the category
+                            // For this example, let's just show one event for each category for demonstration
+                            if (category === 'academic' && event.querySelector('h3').textContent.includes('AI & Ethics')) {
+                                event.style.display = 'block';
+                            } else if (category === 'social' && event.querySelector('h3').textContent.includes('Spring Fest')) {
+                                event.style.display = 'block';
+                            } else if (category === 'workshops') {
+                                // No specific workshop event in the current HTML
+                            } else if (category === 'sports') {
+                                // No specific sports event in the current HTML
+                            }
+                        }
+                    });
+
+                    // Always show the 'My Events' section regardless of the filter
+                    if (myEventsSection) {
+                        myEventsSection.style.display = 'block';
+                    }
+                });
+            });
+
+            rsvpButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.textContent = 'RSVP\'d';
+                    this.classList.add('rsvpd');
+                    this.classList.remove('rsvp-button');
+                    // Implement actual RSVP logic (e.g., updating user's events)
+                });
+            });
+
+            reminderButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Reminder set for this event!'); // Basic reminder alert
+                    // Implement actual reminder logic (e.g., saving to user's preferences)
+                });
+            });
+        });
+    </script>
+</body>
+</html>

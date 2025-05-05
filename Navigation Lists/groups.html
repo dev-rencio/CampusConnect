@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Groups - CampusConnect</title>
+    <link rel="stylesheet" href="navstyle.css">
+    <style>
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <header>
+    <div class="logo">Campus Connect</div>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="home-link">Home</a></li>
+            <li><a href="profile.html" class="profile-link">My Profile</a></li>
+            <li><a href="groups.html" class="groups-link">Groups</a></li>
+            <li><a href="events.html" class="events-link">Events</a></li>
+            <li><a href="resources.html" class="resources-link">Resources</a></li>
+        </ul>
+    </nav>
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+    </div>
+</header>
+
+
+    <main class="container">
+        <section class="feed" style="width: 100%;">
+
+            <h2>Explore Campus Groups</h2>
+            <div class="groups-filter">
+                <button class="filter-button active">All</button>
+                <button class="filter-button">Academic</button>
+                <button class="filter-button">Social</button>
+                <button class="filter-button">Sports</button>
+                <button class="filter-button">Clubs</button>
+                </div>
+
+            <div class="my-groups" id="joined">
+                <h3>My Joined Groups</h3>
+                <div class="suggestion-item">
+                    <img src="Images/csclub.png" alt="CS 101" class="suggestion-pic">
+                    <p><strong>CS 101 Study Group</strong><br>Discuss lectures, labs & homework with peers.<br>Members: 50</p>
+                    <button>Leave</button>
+                </div>
+                </div>
+
+            <h3>All Campus Groups</h3>
+            <p>Explore groups based on your interests or courses. Click "Join" to become a member.</p>
+
+            <div class="suggestion-item">
+                <img src="Images/photoclub.png" alt="Photo Club" class="suggestion-pic">
+                <p><strong>Photography Club</strong><br>Campus-wide photo walks, contests, and tips.<br>Members: 120</p>
+                <button>Join</button>
+            </div>
+
+            <div class="suggestion-item">
+                <img src="Images/mathgroup.png" alt="Math Circle" class="suggestion-pic">
+                <p><strong>Math Circle</strong><br>Weekly problem solving and logic games.<br>Members: 35</p>
+                <button>Join</button>
+            </div>
+
+            <button class="create-group-button">+ Create New Group</button>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CampusConnect - Empowering Student Connections</p>
+    </footer>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.groups-filter .filter-button');
+            const allGroups = document.querySelectorAll('.suggestion-item'); // Select all group items
+            const myGroupsSection = document.querySelector('.my-groups'); // Select the 'My Groups' section
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-button.active').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    const category = this.textContent.toLowerCase();
+                    console.log('Filtering groups by:', category);
+
+                    // Basic example: Hide all groups and show based on category
+                    allGroups.forEach(group => {
+                        group.style.display = 'none'; // Hide all initially
+                        if (category === 'all') {
+                            group.style.display = 'flex'; // Show all if 'All' is selected
+                        } else {
+                            // In a real scenario, you'd check if the group's data matches the category
+                            // For this example, let's just show one group for each category for demonstration
+                            if (category === 'academic' && group.querySelector('strong').textContent.includes('CS 101')) {
+                                group.style.display = 'flex';
+                            } else if (category === 'social' && group.querySelector('strong').textContent.includes('Photography')) {
+                                group.style.display = 'flex';
+                            } else if (category === 'sports' && group.querySelector('strong').textContent.includes('Math Circle')) {
+                                // No actual sports group in the current HTML, so this won't show anything
+                            } else if (category === 'clubs' && group.querySelector('strong').textContent.includes('Photography')) {
+                                group.style.display = 'flex';
+                            }
+                        }
+                    });
+
+                    // Always show the 'My Groups' section regardless of the filter
+                    if (myGroupsSection) {
+                        myGroupsSection.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - CampusConnect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">CampusConnect</div>
+        <nav>
+            <ul>
+                <li><a href="../admin-dashboard.html" class="active">Admin Dashboard</a></li>
+                <li><a href="../Navigation Lists/reports.html">Reports</a></li>
+                <li><a href="../index.html">View Site</a></li>
+            </ul>
+        </nav>
+        <div class="admin-logout">
+            <button onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <h2>Pending Posts for Approval</h2>
+        
+        <div class="post-item">
+            <div class="post-content">
+                <strong>User: JohnDoe</strong>
+                <span class="status-badge pending">Pending</span>
+                <p>Just joined the Math Circle group! Looking forward to some challenging problems. #Math</p>
+                <small>Posted 2 hours ago</small>
+            </div>
+            <div class="post-actions">
+                <button class="approve-btn" onclick="approvePost(this)">Approve</button>
+                <button class="reject-btn" onclick="rejectPost(this)">Reject</button>
+            </div>
+        </div>
+
+        <!-- Add more post items as needed -->
+    </main>
+
+    <script>
+        function approvePost(btn) {
+            const postItem = btn.closest('.post-item');
+            postItem.remove();
+            // Add API call here
+        }
+
+        function rejectPost(btn) {
+            if(confirm('Are you sure you want to reject this post?')) {
+                const postItem = btn.closest('.post-item');
+                postItem.remove();
+                // Add API call here
+            }
+        }
+
+        function logout() {
+            // Add logout logic
+            window.location.href = 'Users Log in and Sign up/login.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusConnect</title>
+    <link rel="stylesheet" href="userloginstyle.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="logo">CampusConnect</div>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="home-link">Home</a></li>
+            <li><a href="Navigation Lists/profile.html" class="profile-link">My Profile</a></li>
+            <li><a href="Navigation Lists/groups.html" class="groups-link">Groups</a></li>
+            <li><a href="Navigation Lists/events.html" class="events-link">Events</a></li>
+            <li><a href="Navigation Lists/resources.html" class="resources-link">Resources</a></li>
+            <li><a href="Navigation Lists/messages.html">Messages</a></li>
+        </ul>
+    </nav>
+    <div class="search-bar">
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+    </div>
+</header>
+
+    <main class="container">
+        <!-- Left Sidebar -->
+        <section class="left-sidebar" id="profile">
+            <div class="profile-card">
+                <img src="image/sponge.jpg" alt="Profile Picture" class="profile-pic">
+                <h3>Alex Johnson</h3>
+                <p>Computer Science Major</p>
+                <div class="profile-links">
+                    <a href="#">GitHub</a> | <a href="#">LinkedIn</a>
+                </div>
+                <button>Edit Profile</button>
+            </div>
+<div class="shortcuts">
+    <h4>Shortcuts</h4>
+    <ul>
+        <li><a href="my-groups.html">Joined Groups</a></li>
+        <li><a href="my-resources.html">Saved Resources</a></li>
+        <li><a href="my-events.html">My Events</a></li>
+    </ul>
+</div>
+        </section>
+
+        <!-- Feed Section -->
+        <section class="feed" id="home">
+            <div class="post-input-container">
+                <textarea placeholder="Share something with your campus..."></textarea>
+                <div class="post-options">
+                    <button class="photo-video-button">Photo/Video</button>
+                    <button>Feeling/Activity</button>
+                    <button class="post-button">Post</button>
+                </div>
+            </div>
+
+            <!-- Sample Posts -->
+            <div class="post">
+                <div class="post-header">
+                    <img src="image/club.jpg.crdownload" alt="User Profile" class="post-user-pic">
+                    <div class="post-info">
+                        <h3>Photography Club</h3>
+                        <p>Posted 2 hours ago</p>
+                    </div>
+                </div>
+                <p class="post-text">Join us this Friday for a campus-wide Photo Walk! Meet fellow photographers and share your passion. #Photography #CampusLife</p>
+                <div class="post-actions">
+                    <button>Like</button>
+                    <button class="comment-button">Comment</button>
+                    <button>Share</button>
+                </div>
+                <div class="comment-section"></div>
+                <div class="comment-input-area" style="display: none;">
+                    <input type="text" placeholder="Write a comment...">
+                    <button class="submit-comment-button">Post</button>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="post-header">
+                    <img src="image/sandy.jpg" alt="User Profile" class="post-user-pic">
+                    <div class="post-info">
+                        <h3>Emily Rose</h3>
+                        <p>Posted 1 day ago</p>
+                    </div>
+                </div>
+                <p class="post-text">Uploaded lecture notes for CS 101 Midterms! Hope it helps everyone. Check Resources section! #StudyTogether</p>
+                <div class="post-actions">
+                    <button>Like</button>
+                    <button class="comment-button">Comment</button>
+                    <button>Share</button>
+                </div>
+                <div class="comment-section"></div>
+                <div class="comment-input-area" style="display: none;">
+                    <input type="text" placeholder="Write a comment...">
+                    <button class="submit-comment-button">Post</button>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="post-header">
+                    <img src="image/patrick.jpg" alt="User Profile" class="post-user-pic">
+                    <div class="post-info">
+                        <h3>Michael Tan</h3>
+                        <p>Posted just now</p>
+                    </div>
+                </div>
+                <p class="post-text">Anyone interested in forming a study group for Math 202? Let's ace this semester! #StudyGroup</p>
+                <div class="post-actions">
+                    <button>Like</button>
+                    <button class="comment-button">Comment</button>
+                    <button>Share</button>
+                </div>
+                <div class="comment-section"></div>
+                <div class="comment-input-area" style="display: none;">
+                    <input type="text" placeholder="Write a comment...">
+                    <button class="submit-comment-button">Post</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Sidebar -->
+        <section class="right-sidebar">
+            <div class="suggestions" id="groups">
+                <h4>Groups & Communities</h4>
+                <div class="suggestion-item">
+                    <img src="image/cs 101.jpg.crdownload" alt="Group 1" class="suggestion-pic">
+                    <p>CS 101 Study Group</p>
+                    <button>Join</button>
+                </div>
+                <div class="suggestion-item">
+                    <img src="image/photography.jpg" alt="Group 2" class="suggestion-pic">
+                    <p>Photography Club</p>
+                    <button>Join</button>
+                </div>
+            </div>
+
+            <div class="trending">
+                <h4>Trending</h4>
+                <ul>
+                    <li>#MidtermsPrep</li>
+                    <li>#Hackathon2025</li>
+                    <li>#CampusEvents</li>
+                </ul>
+            </div>
+
+            <div class="events" id="events">
+                <h4>Upcoming Events</h4>
+                <ul>
+                    <li>Career Fair - May 5, 2025</li>
+                    <li>Spring Fest - May 10, 2025</li>
+                </ul>
+            </div>
+
+            <div class="resources" id="resources">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">CS 101 Midterm Notes</a></li>
+                    <li><a href="#">Physics Cheat Sheet</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CampusConnect - Empowering Student Connections</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

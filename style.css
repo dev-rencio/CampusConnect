@@ -1,0 +1,847 @@
+/* General Styles */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #1c1e21;
+}
+
+header {
+    background-color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0B6623;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #12733B;
+}
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    border: 1px solid #0B6623;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+}
+
+.search-bar button {
+    background-color: #0B6623;
+    color: #fff;
+    border: 1px solid #0B6623;
+    border-radius: 0 20px 20px 0;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #12733B;
+    color: white;
+}
+
+/* Container Layout */
+.container {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.left-sidebar, .right-sidebar {
+    flex-basis: 25%;
+    padding: 20px;
+}
+
+.feed {
+    flex-basis: 50%;
+    padding: 20px;
+}
+
+/* Left Sidebar */
+.left-sidebar {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+.profile-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.profile-card h3 {
+    margin: 10px 0 5px;
+}
+
+.profile-card p {
+    margin: 0;
+    color: #65676b;
+    font-size: 14px;
+}
+
+.profile-links {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.profile-links a {
+    text-decoration: none;
+    color: #4d95f5;
+}
+
+.profile-card button {
+    background-color: #0B6623;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.profile-card button:hover {
+    background-color: #12733B;
+}
+.profile-header {
+    position: relative;
+    margin-bottom: 20px;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+}
+
+.cover-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-pic.large {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    bottom: -60px;
+    left: 20px;
+    border: 5px solid #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info-header {
+    padding: 20px;
+    padding-left: 150px; /* Adjust based on profile pic size and position */
+}
+
+.profile-details {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-details p {
+    margin-bottom: 8px;
+}
+
+.profile-details strong {
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-activity {
+    padding: 20px;
+}
+
+.profile-activity h2 {
+    color: #0B6623;
+    margin-bottom: 15px;
+}
+
+.groups-filter,
+.events-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.groups-filter .filter-button,
+.events-filter .filter-button {
+    background-color: #f2f2f2;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.groups-filter .filter-button.active,
+.groups-filter .filter-button:hover,
+.events-filter .filter-button.active,
+.events-filter .filter-button:hover {
+    background-color: #0B6623;
+    color: #fff;
+    border-color: #0B6623;
+}
+.resources-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.resources-filter .filter-button {
+    background-color: #f2f2f2;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.resources-filter .filter-button.active,
+.resources-filter .filter-button:hover {
+    background-color: #0B6623;
+    color: #fff;
+    border-color: #0B6623;
+}
+
+.resources-list .post {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.resources-list .post h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #0B6623;
+}
+
+.resources-list .post p {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.resources-list .post a {
+    color: #007bff; /* Example link color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.resources-list .post a:hover {
+    text-decoration: underline;
+}
+
+.resource-category {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 5px;
+}
+
+.my-groups {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.my-groups h3 {
+    color: #0B6623;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.suggestion-item p br {
+    display: none; /* Hide extra line breaks on larger screens */
+}
+        .login-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            color: #0B6623;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="password"]:focus {
+            border-color: #0B6623;
+            box-shadow: 0 0 5px rgba(11, 102, 35, 0.3);
+        }
+
+        .login-button {
+            background-color: #0B6623;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-button:hover {
+            background-color: #12733B;
+        }
+
+        .signup-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .signup-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+       .admin-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #0B6623;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .post-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .post-content {
+            flex-grow: 1;
+            margin-right: 15px;
+        }
+
+        .post-actions button {
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin-left: 10px;
+           transition: background-color 0.3s ease;
+        }
+
+        .post-actions button.reject {
+            color: #dc3545;
+        }
+        .post-actions button:hover {
+            background-color: #0B6623;
+            color: white;
+        }
+        .post-actions button.reject:active{
+            background-color: #dc3545;
+            color: white;
+        }
+        .post-actions button.reject:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .pending {
+            color: orange;
+            font-style: italic;
+        }
+
+@media (max-width: 600px) {
+    .suggestion-item p br {
+        display: block; /* Show line breaks on smaller screens for better readability */
+    }
+}
+
+.create-group-button {
+    background-color: #0B6623;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.create-group-button:hover {
+    background-color: #12733B;
+}
+
+/* Shortcuts */
+.shortcuts h4, .suggestions h4, .trending h4, .events h4, .resources h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #65676b;
+}
+
+.shortcuts ul, .suggestions ul, .trending ul, .events ul, .resources ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.shortcuts ul li a {
+    cursor: pointer;
+    display: block;
+    padding: 8px 0;
+    text-decoration: none;
+    color: #0B6623;
+    transition: color 0.3s ease;
+}
+
+.shortcuts ul li a:hover {
+    color: #12733B;
+    text-decoration: underline;
+}
+
+/* Feed */
+.post-input-container {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.post-input-container textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+.post-options {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.post-options button {
+    background-color: #e9ebee;
+    color: #65676b;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+.post-actions button.active {
+    color: #12733B;
+}
+
+.post-options button:hover {
+    background-color: white;
+}
+
+.post-options .post-button {
+    background-color: #0B6623;
+    color: #fff;
+}
+
+.post-options .post-button:hover {
+    background-color: #12733B;
+}
+
+/* Posts */
+.post {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-user-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.post-info h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.post-info p {
+    margin: 0;
+    color: #65676b;
+    font-size: 12px;
+}
+
+.post-text {
+    margin-bottom: 10px;
+}
+
+.post-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.post-actions button {
+    background: none;
+    border: none;
+    color: #65676b;
+    cursor: pointer;
+    padding: 8px 0;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+
+.post-actions button.approve-btn:hover {
+    background-color: #12733B;
+    color: white;
+}
+.post-actions button.reject-btn:hover {
+    background-color: #cc2020;
+    color: white;
+}
+/* Styles for the Events Page */
+
+.groups-filter,
+.events-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.groups-filter .filter-button,
+.events-filter .filter-button {
+    background-color: #f2f2f2;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.groups-filter .filter-button.active,
+.groups-filter .filter-button:hover,
+.events-filter .filter-button.active,
+.events-filter .filter-button:hover {
+    background-color: #0B6623;
+    color: #fff;
+    border-color: #0B6623;
+}
+
+.my-events {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.my-events h3,
+.events h2 {
+    color: #0B6623;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.events .post {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.events .post h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.events .post p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.events .post strong {
+    font-weight: bold;
+    color: #333;
+}
+
+.events .post button.rsvp-button,
+.events .post button.rsvpd {
+    background-color: #0B6623;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.events .post button.rsvpd {
+    background-color: #5cb85c; /* A green color indicating RSVP'd */
+}
+
+.events .post button.rsvp-button:hover {
+    background-color: #12733B;
+}
+
+.events .post button.reminder-button {
+    background-color: #f0ad4e; /* A yellow/orange color for reminder */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.events .post button.reminder-button:hover {
+    background-color: #d9534f; /* A darker red on hover */
+}
+/* Admin Dashboard Specific */
+.admin-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-badge.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Event Cards */
+.event-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.event-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.event-status.rsvpd {
+    background: #d4edda;
+    color: #155724;
+}
+
+/* Group Cards */
+.group-card {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.group-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Responsive adjustments for events page */
+@media (max-width: 600px) {
+    .events .post button.rsvp-button,
+    .events .post button.rsvpd,
+    .events .post button.reminder-button {
+        width: 100%;
+        margin-bottom: 8px;
+        margin-right: 0;
+    }
+}
+
+/* Right Sidebar */
+.right-sidebar {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.suggestion-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.suggestion-item p {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.suggestion-item button {
+    background-color: #0B6623;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.suggestion-item button:hover {
+    background-color: #12733B;
+    color: #e7f3ff;
+}
+
+/* Trending, Events, Resources Lists */
+.trending ul li, .events ul li, .resources ul li {
+    padding: 5px 0;
+    color: #0B6623;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.trending ul li:hover, .events ul li:hover, .resources ul li:hover {
+    color: #12733B;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    color: #0B6623;
+    border-top: 1px solid #ddd;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+    }
+    .left-sidebar, .feed, .right-sidebar {
+        flex-basis: 100%;
+        padding: 10px;
+    }
+    .left-sidebar {
+        position: static;
+        margin-bottom: 20px;
+    }
+}

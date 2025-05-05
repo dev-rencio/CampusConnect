@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messages - CampusConnect</title>
+    <link rel="stylesheet" href="navstyle.css">
+    <style>
+        header {
+    background-color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Make it fixed */
+    top: 0; /* Stick to the top */
+    left: 0; /* Extend to the left edge */
+    width: 100%; /* Extend to the right edge */
+    z-index: 100; /* Ensure it's above other content */
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding-top: 60px; /* Add padding to the top of the body to prevent overlap */
+    background-color: #f0f2f5;
+    color: #1c1e21;
+}
+
+.container {
+    display: flex;
+    max-width: 1200px; /* Adjust as needed */
+    margin: 80px auto 20px; /* Adjust top margin to account for fixed header */
+    padding: 20px;
+}
+
+/* Adjustments for messages.html container */
+body > .container { /* Target the container directly under the body on messages.html */
+    margin-top: 80px; /* Adjust top margin for messages page */
+    max-width: 1000px; /* Use the messages page's max-width */
+}
+
+        .user-list {
+            flex-basis: 300px;
+            border-right: 1px solid #ddd;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .user-list h3 {
+            color: #0B6623;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .user-item {
+            padding: 10px 0;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+
+        .user-item:last-child {
+            border-bottom: none;
+        }
+
+        .user-item .user-pic {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .user-item .user-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .chat-area {
+            flex-grow: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .chat-header {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-header .user-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .chat-header h4 {
+            color: #0B6623;
+            margin: 0;
+        }
+
+        .message-container {
+            overflow-y: auto;
+            flex-grow: 1;
+            padding-bottom: 15px;
+        }
+
+        .message {
+            background-color: #e9ebee;
+            color: #333;
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            width: fit-content;
+            max-width: 80%;
+        }
+
+        .message.sent {
+            background-color: #dcf8c6;
+            align-self: flex-end;
+        }
+
+        .message .sender {
+            font-size: 0.8em;
+            color: #777;
+            margin-bottom: 3px;
+        }
+
+        .message-input-area {
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .message-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .send-button {
+            background-color: #0B6623;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .send-button:hover {
+            background-color: #12733B;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Campus Connect</div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="home-link">Home</a></li>
+                <li><a href="profile.html" class="profile-link">My Profile</a></li>
+                <li><a href="messages.html" class="messages-link active">Messages</a></li> 
+                <li><a href="groups.html" class="groups-link">Groups</a></li>
+                <li><a href="events.html" class="events-link">Events</a></li>
+                <li><a href="resources.html" class="resources-link">Resources</a></li>        
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="user-list">
+            <h3>Contacts</h3>
+            <div class="user-item" onclick="openChat('johnDoe')">
+                <img src="image/john doe.jpg" alt="John Doe" class="user-pic">
+                <span class="user-name">John Doe</span>
+            </div>
+            <div class="user-item" onclick="openChat('janeSmith')">
+                <img src="image/mary.jpg" alt="Jane Smith" class="user-pic">
+                <span class="user-name">Jane Smith</span>
+            </div>
+        </div>
+        <div class="chat-area">
+            <div class="chat-header">
+                <img src="image/john doe.jpg" alt="John Doe" class="user-pic" id="chattingWithPic">
+                <h4 id="chattingWithName">John Doe</h4>
+            </div>
+            <div class="message-container" id="messageContainer">
+                <div class="message">
+                    <span class="sender">John Doe:</span>
+                    Hello!
+                </div>
+                <div class="message sent">
+                    Hey!
+                </div>
+            </div>
+            <div class="message-input-area">
+                <input type="text" class="message-input" id="messageInput" placeholder="Write a message...">
+                <button class="send-button" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openChat(userId) {
+            const chatNameElement = document.getElementById('chattingWithName');
+            const chatPicElement = document.getElementById('chattingWithPic');
+            const messageContainer = document.getElementById('messageContainer');
+            const messageInput = document.getElementById('messageInput');
+
+            // For demonstration, let's just update the chat header
+            if (userId === 'johnDoe') {
+                chatNameElement.textContent = 'John Doe';
+                chatPicElement.src = 'Images/studentpfp.png';
+            } else if (userId === 'janeSmith') {
+                chatNameElement.textContent = 'Jane Smith';
+                chatPicElement.src = 'Images/studentpfp2.png';
+            }
+
+            // In a real scenario, you would fetch messages for this user
+            messageContainer.innerHTML = ''; // Clear previous messages
+            // Add some dummy messages for the selected user
+            if (userId === 'johnDoe') {
+                appendMessage('John Doe', 'Hello!');
+                appendMessage('You', 'Hey!');
+                appendMessage('John Doe', 'How are you doing?');
+            } else if (userId === 'janeSmith') {
+                appendMessage('Jane Smith', 'Hi there!');
+                appendMessage('You', 'Hello Jane!');
+            }
+
+            // Clear the input field when switching chats
+            messageInput.value = '';
+        }
+
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const messageContainer = document.getElementById('messageContainer');
+            const messageText = messageInput.value.trim();
+
+            if (messageText !== '') {
+                appendMessage('You', messageText, true); // 'true' indicates sent message
+                messageInput.value = '';
+
+                // In a real application, you would send this message to the server
+                console.log('Sending message:', messageText);
+
+                // Simulate receiving a reply after a short delay (for demonstration)
+                setTimeout(() => {
+                    const chattingWithName = document.getElementById('chattingWithName').textContent;
+                    if (chattingWithName === 'John Doe') {
+                        appendMessage('John Doe', 'Thanks for the message!');
+                    } else if (chattingWithName === 'Jane Smith') {
+                        appendMessage('Jane Smith', 'Got your message!');
+                    }
+                }, 1000);
+            }
+        }
+
+        function appendMessage(sender, text, isSent = false) {
+            const messageContainer = document.getElementById('messageContainer');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            if (isSent) {
+                messageDiv.classList.add('sent');
+            }
+            messageDiv.innerHTML = `<span class="sender">${sender}:</span> ${text}`;
+            messageContainer.appendChild(messageDiv);
+
+            // Scroll to the bottom of the message container
+            messageContainer.scrollTop = messageContainer.scrollHeight;
+        }
+
+        // Load the chat with the first user by default
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstUser = document.querySelector('.user-item');
+            if (firstUser) {
+                firstUser.click();
+            }
+        });
+    </script>
+</body>
+</html>
