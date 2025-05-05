@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reports - CampusConnect Admin</title>
+    <link rel="stylesheet" href="style.css"> <!-- Adjust path relative to this file -->
+    <style>
+        /* Basic styles for layout - move to style.css ideally */
+        body { font-family: sans-serif; margin: 0; }
+        header { background-color: #f8f9fa; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #dee2e6; }
+        .logo { font-size: 1.5em; font-weight: bold; }
+        nav ul { list-style: none; padding: 0; margin: 0; display: flex; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { text-decoration: none; color: #007bff; }
+        nav ul li a.active { font-weight: bold; color: #0056b3; }
+        .admin-logout button { padding: 8px 15px; background-color: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .admin-container { padding: 20px; max-width: 1200px; margin: 20px auto; }
+        .report-section { margin-bottom: 30px; border: 1px solid #eee; padding: 15px; border-radius: 5px; }
+        .report-section h3 { margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        footer { text-align: center; margin-top: 30px; padding: 15px; background-color: #f8f9fa; border-top: 1px solid #dee2e6; font-size: 0.9em; color: #6c757d; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Campus Connect</div>
+        <nav>
+            <ul>
+                <!-- Adjust paths relative to this file -->
+                <li><a href="admin-dashboard.html">Admin Dashboard</a></li>
+                <li><a href="reports.html" class="active">Reports</a></li>
+                <li><a href="index.html">View Site</a></li>
+            </ul>
+        </nav>
+        <div class="admin-logout">
+            <button onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <main class="admin-container">
+        <h2>Reports</h2>
+
+        <section class="report-section">
+            <h3>User Activity Report</h3>
+            <!-- Placeholder for user activity data/chart -->
+            <p>Summary of user logins, posts, comments, and group joins over the last 7 days.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Active Users (24h)</td>
+                        <td>150</td>
+                    </tr>
+                    <tr>
+                        <td>New Registrations (7d)</td>
+                        <td>45</td>
+                    </tr>
+                    <tr>
+                        <td>Total Posts (7d)</td>
+                        <td>512</td>
+                    </tr>
+                     <tr>
+                        <td>Total Comments (7d)</td>
+                        <td>1024</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="report-section">
+            <h3>Content Moderation Report</h3>
+            <!-- Placeholder for moderation data -->
+            <p>Overview of posts approved, rejected, and pending review.</p>
+             <table>
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Count (Last 30d)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Approved Posts</td>
+                        <td>1250</td>
+                    </tr>
+                    <tr>
+                        <td>Rejected Posts</td>
+                        <td>88</td>
+                    </tr>
+                    <tr>
+                        <td>Currently Pending</td>
+                        <td>5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+         <section class="report-section">
+            <h3>Group Engagement Report</h3>
+            <!-- Placeholder for group data -->
+            <p>Activity levels within popular groups.</p>
+            <p><i>Detailed group reports coming soon...</i></p>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2023 CampusConnect Admin
+    </footer>
+
+    <script>
+        function logout() {
+            // Add actual logout logic here
+            console.log("Logout initiated...");
+            // Adjust path relative to this file
+            window.location.href = '../Users Log in and Sign up/login.html';
+        }
+    </script>
+</body>
+</html>

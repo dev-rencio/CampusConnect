@@ -5,24 +5,9 @@
     <title>Messages - CampusConnect</title>
     <link rel="stylesheet" href="navstyle.css">
     <style>
-        header {
-    background-color: #fff;
-    padding: 15px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    position: fixed; /* Make it fixed */
-    top: 0; /* Stick to the top */
-    left: 0; /* Extend to the left edge */
-    width: 100%; /* Extend to the right edge */
-    z-index: 100; /* Ensure it's above other content */
-}
-
 body {
     font-family: sans-serif;
     margin: 0;
-    padding-top: 60px; /* Add padding to the top of the body to prevent overlap */
     background-color: #f0f2f5;
     color: #1c1e21;
 }
@@ -174,10 +159,10 @@ body > .container { /* Target the container directly under the body on messages.
             <ul>
                 <li><a href="index.html" class="home-link">Home</a></li>
                 <li><a href="profile.html" class="profile-link">My Profile</a></li>
-                <li><a href="messages.html" class="messages-link active">Messages</a></li> 
                 <li><a href="groups.html" class="groups-link">Groups</a></li>
                 <li><a href="events.html" class="events-link">Events</a></li>
-                <li><a href="resources.html" class="resources-link">Resources</a></li>        
+                <li><a href="resources.html" class="resources-link">Resources</a></li>
+                <li><a href="messages.html" class="messages-link active">Messages</a></li>         
             </ul>
         </nav>
         <div class="search-bar">
@@ -229,10 +214,10 @@ body > .container { /* Target the container directly under the body on messages.
             // For demonstration, let's just update the chat header
             if (userId === 'johnDoe') {
                 chatNameElement.textContent = 'John Doe';
-                chatPicElement.src = 'Images/studentpfp.png';
+                chatPicElement.src = 'image/john doe.jpg';
             } else if (userId === 'janeSmith') {
                 chatNameElement.textContent = 'Jane Smith';
-                chatPicElement.src = 'Images/studentpfp2.png';
+                chatPicElement.src = 'image/mary.jpg';
             }
 
             // In a real scenario, you would fetch messages for this user
